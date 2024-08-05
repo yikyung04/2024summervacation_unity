@@ -7,7 +7,7 @@ public class SimpleMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("스타트 함수에서 작성한 내용입니다.")
+        Debug.Log("스타트 함수에서 작성한 내용입니다.");
     }
 
     // Update is called once per frame
@@ -20,10 +20,10 @@ public class SimpleMove : MonoBehaviour
         // -1 ~ 1
         // Input.GetAxis("Horizontal") -> 수평적으로 입력값을 받ㅇ르 때 -1, 1
         // Input.GetAxis("Vertical") -> z방향 1, -z방향 -1
-        float horizontalInput = horizontalInput.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vecter3 moveVecter = new Vecter3(horizontalInput, 0, verticalInput);
+        Vector3 moveVecter = new Vector3(horizontalInput, 0, verticalInput);
 
         transform.position = transform.position + moveVecter * Time.deltaTime; // TIme.deltaTime . Frame 역수
     }

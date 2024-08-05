@@ -28,19 +28,19 @@ public class PlayerController : MonoBehaviour
     private void PlayerMove()
     {
         //플레이어의 입력을 받고 싶다.
-        float hoizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Debug.Log($"horizontalInput : {horizontalInput}, verticalInput : {verticalInut}");
+        Debug.Log($"horizontalInput : {horizontalInput}, verticalInput : {verticalInput}");
 
-        Vecter3 moveVector = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 moveVector = new Vector3(horizontalInput, 0, verticalInput);
 
         // Time.deltaTime연산이 내부적으로 처리되어 있기 때문에 추가안해줘도 된다.
-        CharacterController.SimpleMove(moveVector * speed); // 방향과 속도 speed Vector
+        characterController.SimpleMove(moveVector * speed); // 방향과 속도 speed Vector
     }
     
     // Update is called once per frame
-    private void UPlayerCameraMove()
+    private void PlayerCameraMove()
     {
         //플레이어의 입력. Movse 입력을 받아야겠죠
         float MouseX = Input.GetAxis("Mouse X");
@@ -50,6 +50,6 @@ public class PlayerController : MonoBehaviour
 
         //transform 각도, Y축을 MouseX값만큼 변경해주면 된다.
 
-        transform.rotation = Ouaternion.Euler(MouseX, MouseY, 0);
+        transform.rotation = Quaternion.Euler(MouseX, MouseY, 0);
     }
 }
