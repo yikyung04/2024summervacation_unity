@@ -29,10 +29,10 @@ public class PlayerAnimator : MonoBehaviour
             animator.SetBool("Run", true);
         }
 
-        if(Input.GetKeyDown)
-        {
-            animator.SetTrigger
-        }
+        //if(Input.GetKeyDown)
+        //{
+        //    animator.SetTrigger
+        //
     }
 
 }
