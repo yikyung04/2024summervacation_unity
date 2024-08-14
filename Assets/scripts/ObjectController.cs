@@ -4,30 +4,48 @@ using UnityEngine;
 
 public class ObjectController : MonoBehaviour
 {
-    public GameObject GameOverPanel;
-    public float moveSpeed;
+    public float speed;
 
-    public MainUI mainUI;
+    public GameObject gameOverPanel;
 
     // Start is called before the first frame update
+
     void Start()
     {
+        speed = 10;
+        originPos = transform.position;
 
-        //GameOverPanel = GameObject.Find("Canvas/GameOverPanel");
-        //GameOverPanel.SetActive(false);
+        //gameOverPanel = GameObject.Find("Canvas/GameOverPanel");
+        //gameOverPanel.SetActive(false);
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+
+        transform.position = transform.position + transform.forward * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private Vector3 originPos;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            //GameOverPanel.SetActive(true);
+           
+            //Destroy(gameObject);
+
+          
+            Destroy(collision.gameObject);
+
+            //gameOverPanel.SetActive(true);
+        }
+        if (collision.collider.CompareTag("Wall"))
+        {
+            transform.position = originPos;
         }
     }
+
 }
