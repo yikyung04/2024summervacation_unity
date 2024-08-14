@@ -6,16 +6,14 @@ public class ObjectController : MonoBehaviour
 {
     public float speed;
 
-    public GameObject gameOverPanel;
 
     // Start is called before the first frame update
 
     void Start()
-    {
-        speed = 10;
+    {        
         originPos = transform.position;
 
-        //gameOverPanel = GameObject.Find("Canvas/GameOverPanel");
+        MainUI.Instance.gameOverPanel.SetActive(false); //MainUI 등록한 UI창을 비활성화를 한다.
         //gameOverPanel.SetActive(false);
     }
 
@@ -37,8 +35,10 @@ public class ObjectController : MonoBehaviour
            
             //Destroy(gameObject);
 
-          
+            MainUI.Instance.gameOverCamera.gameObject.SetActive(true);
             Destroy(collision.gameObject);
+
+            MainUI.Instance.gameOverPanel.SetActive(true);
 
             //gameOverPanel.SetActive(true);
         }

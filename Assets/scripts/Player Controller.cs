@@ -85,4 +85,20 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(MouseX, MouseY, 0);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Goal"))
+        {
+            MainUI.Instance.gameClearPanel.SetActive(true);
+            MainUI.Instance.gameClearCamera.gameObject.SetActive(true);
+            Destroy(gameObject);
+        }
+        
+        if(other.CompareTag("Item"))
+        {
+            speed = speed + itemAddSpeed;
+            Destroy(other.gameObject);
+        }
+    }
 }
